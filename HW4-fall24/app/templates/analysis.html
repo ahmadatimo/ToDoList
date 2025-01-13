@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/analysis.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Greeting and Buttons -->
+        <h1 class="alert alert-info">Welcome, {{ session['username'] }}!</h1>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+            <form action="{{ url_for('tasks') }}" method="POST" class="d-inline">
+                <button class="btn btn-primary">Tasks</button>
+            </form>
+            <form action="{{ url_for('logout') }}" method="POST">
+                <button class="btn btn-danger" type="submit">Log Out</button>
+            </form>
+        </div>
+
+        <!-- All Tasks -->
+        <div class="analysis-section all-tasks">
+            <h2 class="task-header">All Tasks</h2>
+            <table class="table table-striped tasks-table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Deadline</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in all_tasks %}
+                    <tr>
+                        <td>{{ task['id'] }}</td>
+                        <td>{{ task['title'] }}</td>
+                        <td>{{ task['task_type'] }}</td>
+                        <td>{{ task['deadline'] }}</td>
+                        <td>{{ task['status'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Completed Tasks -->
+        <div class="analysis-section completed-tasks">
+            <h2 class="task-header">Completed Tasks</h2>
+            <table class="table table-striped tasks-table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Completion Time</th>
+                        <th scope="col">Time Spent (Hours)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in completed_tasks %}
+                    <tr>
+                        <td>{{ task['id'] }}</td>
+                        <td>{{ task['title'] }}</td>
+                        <td>{{ task['completion_time'] }}</td>
+                        <td>{{ task['time_spent'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Uncompleted Tasks -->
+        <div class="analysis-section uncompleted-tasks">
+            <h2 class="task-header">Uncompleted Tasks</h2>
+            <table class="table table-striped tasks-table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Deadline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in uncompleted_tasks %}
+                    <tr>
+                        <td>{{ task['id'] }}</td>
+                        <td>{{ task['title'] }}</td>
+                        <td>{{ task['task_type'] }}</td>
+                        <td>{{ task['deadline'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Late Completed Tasks -->
+        <div class="analysis-section late-tasks">
+            <h2 class="task-header">Late Completed Tasks</h2>
+            <table class="table table-striped tasks-table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Late Submission (Hours)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in late_completed_tasks %}
+                    <tr>
+                        <td>{{ task['id'] }}</td>
+                        <td>{{ task['title'] }}</td>
+                        <td>{{ task['late_submission'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tasks Completed by Type -->
+        <div class="analysis-section tasks-by-type">
+            <h2 class="task-header">Tasks Completed by Type</h2>
+            <table class="table table-striped tasks-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Completed Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in completed_tasks_by_type %}
+                    <tr>
+                        <td>{{ task['task_type'] }}</td>
+                        <td>{{ task['completed_count'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

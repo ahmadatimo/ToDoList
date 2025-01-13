@@ -1,0 +1,42 @@
+/* analysis.css */
+.analysis-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.all-tasks {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+.completed-tasks {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.uncompleted-tasks {
+    background-color: #e7f3fe;
+    border: 1px solid #b8daff;
+}
+
+.late-tasks {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+.tasks-by-type {
+    background-color: #e2e3e5;
+    border: 1px solid #d6d8db;
+}
+
+.task-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.tasks-table {
+    margin-top: 20px;
+}

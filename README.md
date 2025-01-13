@@ -10,6 +10,7 @@ ToDoList is a web application built using Flask, MySQL, HTML, CSS, and JavaScrip
 ## Installation
 
 - Clone The reporsitory
-- run the following command in brackets ```docker build -t cs353hw4app .``` inside the project's terminal
-- build it using the following command ```docker compose up```
+- run the following command ```docker build -t cs353hw4app .``` inside the project's terminal
+- compose it using the following command ```docker compose up```
 - go to  ```http://localhost:5000``` from any of your browsers.
+- Enjoy the experience.
